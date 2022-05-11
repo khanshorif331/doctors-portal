@@ -14,9 +14,11 @@ const MakeAppointment = () => {
 			<div className='flex-1 hidden lg:block'>
 				<img className='mt-[-100px]' src={doctor} alt='' />
 			</div>
-			<div className='flex-1 p-4 text-justify'>
+			<div className='flex-1 p-5 text-justify'>
 				<h3 className='text-xl text-primary font-bold my-4'>Appointment</h3>
-				<h2 className='text-3xl text-white'>Make An Appointment Today</h2>
+				<h2 className='text-3xl text-white py-4'>
+					Make An Appointment Today
+				</h2>
 				<p className='text-white leading-8 my-4'>
 					Everyday the session starts from the evening. Lorem ipsum dolor
 					sit amet consectetur adipisicing elit. Delectus provident ipsum,
