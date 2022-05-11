@@ -4,8 +4,8 @@ import PrimaryButton from '../Shared/PrimaryButton'
 
 const Hero = () => {
 	return (
-		<div class='hero min-h-screen w-full'>
-			<div class='hero-content flex-col lg:flex-row'>
+		<div className='hero min-h-screen w-full'>
+			<div className='hero-content flex-col lg:flex-row'>
 				<div className='flex-1'>
 					<img
 						src={treatment}
@@ -13,10 +13,10 @@ const Hero = () => {
 					/>
 				</div>
 				<div className='flex-1'>
-					<h1 class='text-5xl font-bold'>
+					<h1 className='text-5xl font-bold'>
 						Exceptional Dental Care,on Your Terms
 					</h1>
-					<p class='py-6 leading-8 tracking-wide font-semi-bold text-justify'>
+					<p className='py-6 leading-8 tracking-wide font-semi-bold text-justify'>
 						Provident cupiditate voluptatem et in. Quaerat fugiat ut
 						assumenda excepturi exercitationem quasi. In deleniti eaque
 						aut repudiandae et a id nisi. Lorem ipsum dolor sit amet
