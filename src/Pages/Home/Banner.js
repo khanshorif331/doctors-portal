@@ -1,7 +1,6 @@
 import React from 'react'
 import chair from '../../assets/images/chair.png'
 import './Banner.css'
-// import bg from '../../assets/images/bg.png'
 
 const Banner = () => {
 	return (
