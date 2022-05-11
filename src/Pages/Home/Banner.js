@@ -4,9 +4,9 @@ import './Banner.css'
 
 const Banner = () => {
 	return (
-		<div class='hero min-h-screen mx-auto back-image'>
+		<div class='hero min-h-screen mx-auto w-full back-image'>
 			<div class='hero-content flex-col lg:flex-row-reverse'>
-				<img src={chair} class=' rounded-lg shadow-2xl max-w-lg' />
+				<img src={chair} class=' rounded-lg shadow-2xl max-w-sm' />
 				<div>
 					<h1 class='text-5xl font-bold'>Your New Smile Starts Here</h1>
 					<p class='py-6  text-lg leading-loose md:text-xl'>
