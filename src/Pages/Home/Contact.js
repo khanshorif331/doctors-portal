@@ -37,7 +37,7 @@ const Contact = () => {
 					/>{' '}
 					<br />
 					<textarea
-						className='w-full md:w-3/4 py-3 mx-auto block px-2 border rounded-lg'
+						className='w-3/4 py-3 mx-auto block px-2 border rounded-lg'
 						name=''
 						id=''
 						cols='30'
