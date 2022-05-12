@@ -6,12 +6,8 @@ import 'react-day-picker/dist/style.css'
 const AppointmentBanner = ({ data, setDate }) => {
 	return (
 		<div class='hero min-h-screen '>
-			<div class='hero-content flex-col lg:flex-row-reverse'>
-				<img
-					src={chair}
-					class='max-w-sm rounded-lg shadow-2xl'
-					alt='Dentist Chair'
-				/>
+			<div class='hero-content flex-col lg:flex-row-reverse p-0'>
+				<img src={chair} class='max-w-sm rounded-lg' alt='Dentist Chair' />
 				<div>
 					<DayPicker mode='single' selected={data} onSelect={setDate} />
 				</div>
