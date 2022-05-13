@@ -1,28 +1,28 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 
 const Navbar = () => {
 	const menuItems = (
 		<>
 			<li>
-				<Link to='/'>Home</Link>
+				<NavLink to='/'>Home</NavLink>
 			</li>
 
 			<li>
-				<Link to='/appointment'>Appointment</Link>
+				<NavLink to='/appointment'>Appointment</NavLink>
 			</li>
 			<li>
-				<Link to='reviews'>Reviews</Link>
+				<NavLink to='reviews'>Reviews</NavLink>
 			</li>
 
 			<li>
-				<Link to='contactus'>Contact Us</Link>
+				<NavLink to='contactus'>Contact Us</NavLink>
 			</li>
 			<li>
-				<Link to='about'>About</Link>
+				<NavLink to='about'>About</NavLink>
 			</li>
 			<li>
-				<Link to='login'>Login</Link>
+				<NavLink to='login'>Login</NavLink>
 			</li>
 		</>
 	)
@@ -39,9 +39,9 @@ const Navbar = () => {
 							stroke='currentColor'
 						>
 							<path
-								stroke-linecap='round'
-								stroke-linejoin='round'
-								stroke-width='2'
+								strokeLinecap='round'
+								strokeLinejoin='round'
+								strokeWidth='2'
 								d='M4 6h16M4 12h8m-8 6h16'
 							/>
 						</svg>
