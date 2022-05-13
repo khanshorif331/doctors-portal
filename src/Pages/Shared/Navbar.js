@@ -29,7 +29,7 @@ const Navbar = () => {
 				<NavLink to='about'>About</NavLink>
 			</li>
 			{user ? (
-				<button onClick={logout} class='btn btn-ghost'>
+				<button onClick={logout} className='btn btn-ghost'>
 					SignOut
 				</button>
 			) : (
