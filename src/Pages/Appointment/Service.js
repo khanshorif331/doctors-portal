@@ -5,15 +5,15 @@ const Service = ({ service, setTreatment }) => {
 	return (
 		<div class='card lg:max-w-lg bg-base-100 shadow-xl'>
 			<div class='card-body'>
-				<h2 class='card-title text-secondary'>{name}</h2>
-				<p>
+				<h2 class='card-title text-secondary mx-auto'>{name}</h2>
+				<p className='text-center'>
 					{slots.length > 0 ? (
 						<span>{slots[0]}</span>
 					) : (
 						<span className='text-red-400'>Try another date.!</span>
 					)}
 				</p>
-				<p>
+				<p className='text-center'>
 					{' '}
 					{slots.length} {slots.length > 1 ? 'spaces' : 'space'} available{' '}
 				</p>
