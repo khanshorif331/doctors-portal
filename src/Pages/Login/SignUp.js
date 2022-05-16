@@ -50,8 +50,12 @@ const SignUp = () => {
 		)
 	}
 
-	if (user || gUser) {
-		console.log(user || gUser)
+	// if (user || gUser) {
+	// 	console.log(user || gUser)
+	// }
+
+	if (token) {
+		navigate('/appointment')
 	}
 
 	return (
