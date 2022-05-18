@@ -20,7 +20,6 @@ const Users = () => {
 	if (isLoading) {
 		return <Loading></Loading>
 	}
-
 	return (
 		<div>
 			<h1 className='text-2xl'>All Users : {users?.length} </h1>
