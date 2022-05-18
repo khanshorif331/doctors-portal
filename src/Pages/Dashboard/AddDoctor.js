@@ -1,6 +1,7 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
 import { useQuery } from 'react-query'
+import { toast } from 'react-toastify'
 import Loading from '../Shared/Loading'
 
 const AddDoctor = () => {
@@ -8,12 +9,56 @@ const AddDoctor = () => {
 		register,
 		formState: { errors },
 		handleSubmit,
+		reset,
 	} = useForm()
 	const { data: services, isLoading } = useQuery('services', () =>
 		fetch('http://localhost:5000/service').then(res => res.json())
 	)
+
+	const imgStorageKey = 'f3a31781efdf5b761c71684f46ddfbec'
+
 	const onSubmit = async data => {
-		console.log('data', data)
+		const image = data.image[0]
+		const formData = new FormData()
+		formData.append('image', image)
+
+		const url = `https://api.imgbb.com/1/upload?key=${imgStorageKey}`
+		fetch(url, {
+			method: 'POST',
+			body: formData,
+		})
+			.then(res => res.json())
+			.then(result => {
+				if (result.success) {
+					const img = result.data.url
+					const doctor = {
+						name: data.name,
+						email: data.email,
+						specialty: data.specialty,
+						img: img,
+					}
+					// send to your database
+					fetch('http://localhost:5000/doctor', {
+						method: 'POST',
+						headers: {
+							'content-type': 'application/json',
+							authorization: `Bearer ${localStorage.getItem(
+								'accessToken'
+							)}`,
+						},
+						body: JSON.stringify(doctor),
+					})
+						.then(res => res.json())
+						.then(inserted => {
+							if (inserted.insertedId) {
+								toast.success('Doctor Added successfully')
+								reset()
+							} else {
+								toast.error('Failed to add the doctor')
+							}
+						})
+				}
+			})
 	}
 
 	if (isLoading) {
@@ -87,7 +132,7 @@ const AddDoctor = () => {
 					</label>
 					<select
 						{...register('specialty')}
-						class='select w-full max-w-xs'
+						class='select w-full max-w-xs input-bordered'
 					>
 						{services.map(service => (
 							<option key={service._id} value={service.name}>
@@ -95,29 +140,29 @@ const AddDoctor = () => {
 							</option>
 						))}
 					</select>
-					{/* <input
-						type='text'
-						placeholder='Specialty'
+				</div>
+
+				<div className='form-control w-full max-w-xs'>
+					<label className='label'>
+						<span className='label-text'>Photo</span>
+					</label>
+					<input
+						type='file'
 						className='input input-bordered w-full max-w-xs'
-						{...register('specialty', {
+						{...register('image', {
 							required: {
 								value: true,
-								message: 'Specialization is Required',
+								message: 'Image is required',
 							},
 						})}
-					/> */}
-					{/* <label className='label'>
-						{errors.password?.type === 'required' && (
+					/>
+					<label className='label'>
+						{errors.name?.type === 'required' && (
 							<span className='label-text-alt text-red-500'>
-								{errors.password.message}
+								{errors.name.message}
 							</span>
 						)}
-						{errors.password?.type === 'minLength' && (
-							<span className='label-text-alt text-red-500'>
-								{errors.password.message}
-							</span>
-						)}
-					</label> */}
+					</label>
 				</div>
 
 				<input className='btn w-full max-w-xs' type='submit' value='Add' />
