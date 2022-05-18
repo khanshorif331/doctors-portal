@@ -47,7 +47,13 @@ const ManageDoctors = () => {
 					</tbody>
 				</table>
 			</div>
-			{deletingDoctor && <DeleteConfirmModal></DeleteConfirmModal>}
+			{deletingDoctor && (
+				<DeleteConfirmModal
+					refetch={refetch}
+					deletingDoctor={deletingDoctor}
+					setDeletingDoctor={setDeletingDoctor}
+				></DeleteConfirmModal>
+			)}
 		</div>
 	)
 }
