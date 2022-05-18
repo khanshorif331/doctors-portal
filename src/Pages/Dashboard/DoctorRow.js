@@ -1,7 +1,7 @@
 import React from 'react'
 import { toast } from 'react-toastify'
 
-const DoctorRow = ({ doctor, index, refetch }) => {
+const DoctorRow = ({ doctor, index, refetch, setDeletingDoctor }) => {
 	const { name, specialty, img, email } = doctor
 
 	const handleDelete = email => {
@@ -33,6 +33,13 @@ const DoctorRow = ({ doctor, index, refetch }) => {
 			<td>{name}</td>
 			<td>{specialty}</td>
 			<td>
+				<label
+					onClick={() => setDeletingDoctor(doctor)}
+					for='delete-confirm-modal'
+					class='btn btn-xs btn-error'
+				>
+					Delete
+				</label>
 				<button
 					onClick={() => handleDelete(email)}
 					class='btn btn-xs btn-error'

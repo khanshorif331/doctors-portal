@@ -22,7 +22,6 @@ const MyAppointments = () => {
 				}
 			)
 				.then(res => {
-					console.log('res', res)
 					if (res.status === 401 || res.status === 403) {
 						signOut(auth)
 						localStorage.removeItem('accessToken')
