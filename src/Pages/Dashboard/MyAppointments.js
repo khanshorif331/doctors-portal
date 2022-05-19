@@ -3,11 +3,14 @@ import React, { useEffect, useState } from 'react'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import { Link, useNavigate } from 'react-router-dom'
 import auth from '../../firebase.init'
+import Loading from '../Shared/Loading'
 
 const MyAppointments = () => {
 	const [user] = useAuthState(auth)
 	const [appointments, setAppointments] = useState([])
+	const [loading, setLoading] = useState(true)
 	const navigate = useNavigate()
+
 	useEffect(() => {
 		if (user) {
 			fetch(
@@ -32,11 +35,13 @@ const MyAppointments = () => {
 				})
 				.then(data => {
 					setAppointments(data)
+					setLoading(false)
 				})
 		}
 	}, [user])
 	return (
 		<div>
+			{loading && <Loading></Loading>}
 			<h1>My Appointments : ${appointments?.length}</h1>
 			<div class='overflow-x-auto'>
 				<table class='table w-full'>
@@ -60,7 +65,7 @@ const MyAppointments = () => {
 								<td>{a.treatment}</td>
 								<td>
 									{a.price && !a.paid && (
-										<Link to={``}>
+										<Link to={`/dashboard/payment/${a._id}`}>
 											<button className='btn btn-xs btn-success'>
 												Pay
 											</button>
