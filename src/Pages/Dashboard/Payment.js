@@ -13,11 +13,7 @@ const stripePromise = loadStripe(
 const Payment = () => {
 	const { id } = useParams()
 	const url = `http://localhost:5000/booking/${id}`
-	const {
-		data: appointment,
-		isLoading,
-		refetch,
-	} = useQuery(['booking', 'id'], () =>
+	const { data: appointment, isLoading } = useQuery(['booking', 'id'], () =>
 		fetch(url, {
 			method: 'GET',
 			headers: {
@@ -53,7 +49,7 @@ const Payment = () => {
 			<div class='card flex-shrink-0 w-50 max-w-md shadow-2xl bg-base-100'>
 				<div class='card-body'>
 					<Elements stripe={stripePromise}>
-						<CheckoutForm />
+						<CheckoutForm appointment={appointment} />
 					</Elements>
 				</div>
 			</div>
